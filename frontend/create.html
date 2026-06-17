@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eff6ff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 60px;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 26px 28px;
+            border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
+            width: 420px;
+        }
+        h2 {
+            margin-top: 0;
+            margin-bottom: 6px;
+            color: #111827;
+        }
+        .subtitle {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 18px;
+        }
+        label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 4px;
+            color: #374151;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px 11px;
+            margin-bottom: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        textarea { resize: vertical; min-height: 120px; }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        .btn:hover { opacity: 0.95; }
+        .link-back {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 13px;
+            color: #6b7280;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>Create New Post</h2>
+    <p class="subtitle">Write a title and some content for your blog.</p>
+
+    <form action="/create" method="post">
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title" placeholder="Enter post title" required>
+
+        <label for="content">Content</label>
+        <textarea id="content" name="content" placeholder="Write your post content..." required></textarea>
+
+        <button type="submit" class="btn">Publish Post</button>
+    </form>
+
+    <a href="/" class="link-back">&larr; Back to blog</a>
+</div>
+</body>
+</html>

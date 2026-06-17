@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Post</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fee2e2;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 70px;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 26px 28px;
+            border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(127, 29, 29, 0.25);
+            width: 420px;
+            border: 1px solid #fecaca;
+        }
+        h2 { margin: 0 0 8px; color: #b91c1c; }
+        p { font-size: 14px; color: #4b5563; }
+        .post-title {
+            font-weight: 600;
+            color: #111827;
+        }
+        .buttons {
+            margin-top: 18px;
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            flex: 1;
+            padding: 9px 0;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .btn-red { background-color: #dc2626; color: white; }
+        .btn-gray { background-color: #e5e7eb; color: #374151; }
+        a { text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>Delete this post?</h2>
+    <p>Are you sure you want to delete the post <span class="post-title">"{{ post.title }}"</span>?</p>
+    <p>This action cannot be undone.</p>
+
+    <div class="buttons">
+        <a href="/delete/{{ post.id }}">
+            <button class="btn btn-red" type="button">Yes, delete</button>
+        </a>
+        <a href="/">
+            <button class="btn btn-gray" type="button">Cancel</button>
+        </a>
+    </div>
+</div>
+</body>
+</html>

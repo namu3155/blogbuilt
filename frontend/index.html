@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Blog</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0f2fe, #fef3c7);
+            margin: 0;
+            padding: 40px 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 24px 28px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 26px;
+            color: #111827;
+        }
+        .subtitle {
+            margin-top: 4px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        .btn {
+            padding: 8px 14px;
+            border-radius: 999px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-blue { background-color: #2563eb; color: white; }
+        .btn-green { background-color: #16a34a; color: white; }
+        .btn-red { background-color: #dc2626; color: white; }
+        .btn-outline {
+            background-color: transparent;
+            color: #2563eb;
+            border: 1px solid #bfdbfe;
+        }
+        .btn:hover { opacity: 0.9; }
+
+        .posts-grid {
+            margin-top: 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+        }
+        .post-card {
+            background-color: #f9fafb;
+            border-radius: 12px;
+            padding: 16px 18px;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 180px;
+        }
+        .post-title {
+            font-size: 18px;
+            margin: 0 0 6px;
+            color: #111827;
+        }
+        .post-content {
+            font-size: 14px;
+            color: #4b5563;
+            margin: 0 0 12px;
+        }
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+        }
+        .post-id {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+        .empty-state {
+            margin-top: 30px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        @media (max-width: 600px) {
+            body { padding: 20px 0; }
+            .container { margin: 0 16px; padding: 18px 16px; }
+            h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>My Blog</h1>
+            <p class="subtitle">Create, edit and manage your blog posts.</p>
+        </div>
+        <a href="/create" class="btn btn-blue">+ New Post</a>
+    </div>
+
+    {% if posts %}
+    <div class="posts-grid">
+        {% for post in posts %}
+            <div class="post-card">
+                <div>
+                    <h2 class="post-title">{{ post.title }}</h2>
+                    <p class="post-content">
+                        {{ post.content[:150] }}{% if post.content|length > 150 %}...{% endif %}
+                    </p>
+                </div>
+                <div class="post-footer">
+                    <span class="post-id">ID: {{ post.id }}</span>
+                    <div class="actions">
+                        <a href="/update/{{ post.id }}" class="btn btn-green">Edit</a>
+                        <a href="/delete/{{ post.id }}"
+                           class="btn btn-red"
+                           onclick="return confirm('Delete this post?');">
+                            Delete
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <p>No posts yet. Start by creating your first blog post.</p>
+        <a href="/create" class="btn btn-outline">+ Create a post</a>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
